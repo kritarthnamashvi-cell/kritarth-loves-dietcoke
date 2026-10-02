@@ -109,8 +109,7 @@ btnMe.addEventListener("click", function () {
   if (finished) return;
   finished = true;
   lockButtons();
-  showMessage("I KNOW RIGHTTTT
-              ME DA REAL GOAT", "");
+  showMessage("I KNOW RIGHTTTT me goat", "");
   goToScreen2(DELAY_AFTER_ME_CLICK);
 });
 

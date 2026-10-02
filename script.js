@@ -14,9 +14,9 @@
 
 const IMAGES = {
   rohit:   "https://w0.peakpx.com/wallpaper/705/885/HD-wallpaper-rohit-sharma-best-happy-moments-rohit-sharma-happy-moments-cricketer-hitman.jpg",   // 1. Rohit Sharma
-  me:      "images/meraphoto.jpeg",             // 2. Me
+  me:      "meraphoto.jpeg",             // 2. Me
 
-  collage: "images/knnn.jpeg"        // 3. Big collage
+  collage: "knnn.jpeg"        // 3. Big collage
 };
 
 /* ==========================================================

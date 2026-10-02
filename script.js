@@ -109,7 +109,8 @@ btnMe.addEventListener("click", function () {
   if (finished) return;
   finished = true;
   lockButtons();
-  showMessage("I know right!", "");
+  showMessage("I KNOW RIGHTTTT
+              ME DA REAL GOAT", "");
   goToScreen2(DELAY_AFTER_ME_CLICK);
 });
 
@@ -123,7 +124,7 @@ requestAnimationFrame(function () {
    3. Floating hearts & sparkles
    ========================================================== */
 const floaties = document.getElementById("floaties");
-const SYMBOLS  = [".", "<3", "🤍", "✨", "♡"];
+const SYMBOLS  = [".", "<3", "k", ":)", "♡"];
 
 function makeFloaty() {
   const el = document.createElement("span");

@@ -123,7 +123,7 @@ requestAnimationFrame(function () {
    3. Floating hearts & sparkles
    ========================================================== */
 const floaties = document.getElementById("floaties");
-const SYMBOLS  = ["💗", "💕", "🤍", "✨", "♡"];
+const SYMBOLS  = [".", "<3", "🤍", "✨", "♡"];
 
 function makeFloaty() {
   const el = document.createElement("span");

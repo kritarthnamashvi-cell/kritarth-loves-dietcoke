@@ -1,0 +1,288 @@
+/* ==========================================================
+   STYLE.CSS — easy to edit!
+   Change the colors below to re-theme the whole site.
+   ========================================================== */
+
+:root {
+  --pink: #ffd6e5;
+  --pink-deep: #b9607e;
+  --lavender: #e6dcff;
+  --cream: #fff8ef;
+  --baby-blue: #d7ecff;
+  --peach: #ffe0cc;
+  --text: #4a2f3d;
+  --heart: #a94f6b;
+
+  --font-heading: "DM Serif Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-love: "Playfair Display", Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--cream) 0%, var(--pink) 40%, var(--lavender) 75%, var(--baby-blue) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* ---------- Background blobs ---------- */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+.blob-1 { width: 320px; height: 320px; background: var(--peach);    top: -80px;  left: -80px; }
+.blob-2 { width: 380px; height: 380px; background: var(--lavender); bottom: -120px; right: -100px; animation-delay: -5s; }
+.blob-3 { width: 240px; height: 240px; background: var(--baby-blue); top: 45%; left: 60%; animation-delay: -9s; }
+
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 40px) scale(1.12); }
+}
+
+/* ---------- Floating hearts (made by script.js) ---------- */
+.floaties { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.floaty {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) translateX(40px) rotate(25deg); opacity: 0; }
+}
+
+/* ---------- Screens & transitions ---------- */
+.screen {
+  position: relative;
+  z-index: 2;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.screen.active  { display: block; }
+.screen.visible { opacity: 1; }
+
+#screen1 {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+#screen1.active { display: flex; }
+
+/* ---------- Screen 1: choose card ---------- */
+.choose-card {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36px;
+  padding: 36px 22px 30px;
+  box-shadow: 0 20px 50px rgba(255, 143, 184, 0.25);
+  animation: cardIn 1s ease both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.choose-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 5.5vw, 2.8rem);
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 26px;
+}
+
+.picks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.pick {
+  background: var(--cream);
+  border-radius: 28px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 10px 24px rgba(107, 74, 94, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.pick:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 16px 30px rgba(255, 143, 184, 0.3); }
+
+/* ---------- Photo frames (shared) ---------- */
+.photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--lavender), var(--pink), var(--peach));
+  margin-bottom: 14px;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.pick:hover img, .polaroid:hover img { transform: scale(1.06); }
+
+/* Shown when no image link has been added yet */
+.placeholder-text {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: rgba(107, 74, 94, 0.6);
+  padding: 10px;
+}
+.photo-frame.empty img { display: none; }
+.photo-frame.empty .placeholder-text { display: flex; }
+.photo-frame.empty::after {
+  content: "🤍";
+  position: absolute;
+  top: 10px; right: 12px;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--lavender);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(107, 74, 94, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn:hover  { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 20px rgba(107, 74, 94, 0.2); }
+.btn:active { transform: scale(0.96); }
+.btn-main   { background: var(--pink-deep); color: #fff; }
+.btn:disabled { opacity: 0.55; cursor: default; transform: none; }
+.btn:focus-visible { outline: 3px solid var(--heart); outline-offset: 3px; }
+
+/* ---------- Messages on screen 1 ---------- */
+.message-area { min-height: 90px; margin-top: 24px; }
+.msg-big {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5vw, 2.3rem);
+  color: var(--heart);
+}
+.msg-small {
+  margin-top: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+}
+.pop { animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Screen 2: hero ---------- */
+.hero { text-align: center; padding: 64px 18px 30px; }
+.hero-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 6.5vw, 3.4rem);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero-sub {
+  margin-top: 16px;
+  font-size: clamp(1.05rem, 3.5vw, 1.4rem);
+  font-weight: 600;
+}
+
+/* ---------- Big collage ---------- */
+.collage {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 10px;
+}
+.collage-frame {
+  aspect-ratio: auto;
+  margin-bottom: 0;
+  border-radius: 24px;
+  border: 10px solid #fff;
+  box-shadow: 0 20px 50px rgba(74, 47, 61, 0.18);
+}
+.collage-frame img { height: auto; }
+.collage-frame.empty { aspect-ratio: 4 / 5; }
+
+/* ---------- Special message ---------- */
+.love-note {
+  position: relative;
+  max-width: 960px;
+  margin: 24px auto;
+  width: calc(100% - 32px);
+  text-align: center;
+  background: linear-gradient(135deg, #fff, var(--pink) 60%, var(--lavender));
+  border: 3px solid #fff;
+  border-radius: 40px;
+  padding: clamp(32px, 7vw, 60px) clamp(20px, 6vw, 60px);
+  box-shadow: 0 18px 44px rgba(185, 96, 126, 0.22);
+}
+.love-note p {
+  font-family: var(--font-love);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
+  line-height: 1.4;
+  color: var(--text);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.spark { position: absolute; color: #fff; text-shadow: 0 0 10px var(--pink-deep); animation: twinkle 2.6s ease-in-out infinite; }
+.s1 { top: 14px; left: 22px;  font-size: 1.6rem; }
+.s2 { bottom: 16px; right: 28px; font-size: 1.9rem; animation-delay: -1s; }
+.s3 { top: 18px; right: 40px; font-size: 1.4rem; color: var(--heart); animation-delay: -1.8s; }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.85) rotate(0deg); }
+  50%      { opacity: 1;   transform: scale(1.2)  rotate(20deg); }
+}
+
+.footer { text-align: center; padding: 10px 16px 50px; font-family: var(--font-love); font-style: italic; font-size: 1.1rem; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 480px) {
+  .picks { gap: 12px; }
+  .pick { padding: 8px 8px 12px; border-radius: 22px; }
+  .btn { padding: 10px 16px; font-size: 0.92rem; }
+  .collage-frame { border-width: 6px; border-radius: 18px; }
+}
+
+/* Be kind to people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .floaties { display: none; }
+}

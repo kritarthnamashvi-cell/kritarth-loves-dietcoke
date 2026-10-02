@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Boyfriend's Day</title>
+
+  <!-- Cute fonts (optional – the site still works offline with fallback fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!--
+    ==========================================================
+    WHERE TO PUT YOUR PICTURES?  ->  open script.js
+    All image links (Rohit, you, and photos 1-10) live in ONE
+    list at the very top of script.js. No need to edit this file.
+    ==========================================================
+  -->
+
+  <!-- Floating hearts / sparkles are created here by script.js -->
+  <div class="floaties" id="floaties" aria-hidden="true"></div>
+
+  <!-- Soft background blobs -->
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <!-- ====================== SCREEN 1 ====================== -->
+  <main class="screen active" id="screen1">
+    <section class="choose-card">
+      <h1 class="choose-title">Choose the love of your life</h1>
+
+      <div class="picks">
+
+        <!-- Pick 1: Rohit Sharma -->
+        <article class="pick">
+          <figure class="photo-frame">
+            <!-- 👇 IMAGE LINK GOES IN script.js  (IMAGES.rohit) -->
+            <img src="https://w0.peakpx.com/wallpaper/705/885/HD-wallpaper-rohit-sharma-best-happy-moments-rohit-sharma-happy-moments-cricketer-hitman.jpg" alt="Rohit Sharma" data-slot="rohit" />
+            <span class="placeholder-text">Rohit Sharma<br />photo here</span>
+          </figure>
+          <button class="btn" id="btnRohit" type="button">select</button>
+        </article>
+
+        <!-- Pick 2: Me -->
+        <article class="pick">
+          <figure class="photo-frame">
+            <!-- 👇 IMAGE LINK GOES IN script.js  (IMAGES.me) -->
+            <img src="images/meraphoto.jpeg" alt="Me" data-slot="me" />
+            <span class="placeholder-text">My photo<br />here</span>
+          </figure>
+          <button class="btn btn-main" id="btnMe" type="button">select</button>
+        </article>
+
+      </div>
+
+      <!-- Messages show up here -->
+      <div class="message-area" id="messageArea" aria-live="polite">
+        <p class="msg-big" id="msgBig"></p>
+        <p class="msg-small" id="msgSmall"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== SCREEN 2 ====================== -->
+  <main class="screen" id="screen2">
+
+    <header class="hero">
+      <h1 class="hero-title">HAPPY Boifrand DAY</h1>
+      
+    </header>
+
+    <!-- 🖼️ BIG COLLAGE SPACE
+         Paste your collage link in script.js  ->  IMAGES.collage
+         The whole picture shows uncropped, whatever its shape. -->
+    <section class="collage" aria-label="Our collage">
+      <div class="photo-frame collage-frame">
+        <img src="images/knnn.jpeg" alt="Our collage" data-slot="collage" />
+        <span class="placeholder-text">Our collage goes here</span>
+      </div>
+    </section>
+
+    <!-- ⭐ SPECIAL MESSAGE -->
+    <blockquote class="love-note">
+      <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">♡</span>
+      <p>I can afford a lot of things, but losing you isn't one of them.</p>
+    </blockquote>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
